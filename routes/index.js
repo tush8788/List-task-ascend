@@ -4,4 +4,8 @@ const router = express.Router();
 
 router.get('/',homeController.home);
 
+router.get('/signin',homeController.signInPage);
+
+router.get('/signup',homeController.signUpPage);
+
 module.exports=router
