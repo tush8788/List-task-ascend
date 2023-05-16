@@ -4,7 +4,7 @@ module.exports.createList=async function(req,res){
   try{
     console.log(req.body);
     let list = await ListDB.create({
-        listName:req.body.listName,
+        listName:req.body.ListName,
         user:req.user
     });
 

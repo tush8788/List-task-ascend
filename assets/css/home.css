@@ -1,4 +1,4 @@
-.col{
+.first{
     height: 400px;
     width: 100%;
     display: flex;
@@ -38,4 +38,18 @@
     color: white;
     border-radius: 20px;
     width: 100%;
+}
+
+/* display list */
+
+.display-lists{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card{
+    margin: 10px;
+    width: 20%;
 }

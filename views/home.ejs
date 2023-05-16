@@ -1,12 +1,12 @@
 <style>
-    #task-container>.form-control{
+    #task-container>.form-control {
         margin-bottom: 10px;
     }
 </style>
 <link rel="stylesheet" href="/css/home.css">
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col first">
             <div class="create-list-container">
                 <h3 class="heading">Add List</h3><br>
                 <form action="/list/create" method="post">
@@ -14,7 +14,9 @@
                     <div id="task-container">
                         <input type="text" class="form-control" name="TaskName" placeholder="Task Name" required>
                     </div>
-                    <center><img onClick="addNewTask()" src="https://cdn.iconscout.com/icon/free/png-32/free-plus-90-433856.png?f=avif&w=512" alt=""></center><br>
+                    <center><img onClick="addNewTask()"
+                            src="https://cdn.iconscout.com/icon/free/png-32/free-plus-90-433856.png?f=avif&w=512"
+                            alt=""></center><br>
                     <input type="submit" id="btnSubmit" class="btn btn-dark btn-outline-warning" value="Add List">
                 </form>
             </div>
@@ -23,5 +25,26 @@
 </div>
 
 
+<div class="display-lists">
+    <% for(i of list){%>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">List Title : <%=i.listName%></h5>
+                <hr>
+                <% i.tasks.map((task)=>{%>
+                    <div>
+                        <p>
+                            Task Name : <%=task.taskName%> 
+                            <br>Task done : <%=task.done%>
+                            <a href="/task/delete/&listId=<%=i._id%>&taskId=<%=task._id%>">delete</a>
+                        </p>
+                    </div>
+                <%})%>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+    <%}%>
+</div>
 
 <script src="/js/AddTask.js"></script>

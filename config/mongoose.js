@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 mongoose.set('strictQuery',false);
 
-mongoose.connect(process.env.MONGO_URL||'mongodb://localhost/task_list_ascend)');
+mongoose.connect(process.env.MONGO_URL||'mongodb://localhost/task_list_ascend');
 
 const db = mongoose.connection;
 

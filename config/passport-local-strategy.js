@@ -49,7 +49,7 @@ passport.checkAuthentication=function(req,res,next){
     if(req.isAuthenticated()){
         return next();
     }
-    return res.redirect('/');
+    return res.redirect('/signin');
 }
 //login user set in res.locals for use in views folder
 passport.setAuthenticatedUser=function(req,res,next){
