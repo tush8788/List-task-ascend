@@ -8,6 +8,10 @@ router.get('/signin',homeController.signInPage);
 
 router.get('/signup',homeController.signUpPage);
 
+//user
 router.use('/user',require('./user'));
+
+//list
+router.use('/list',require('./list'));
 
 module.exports=router

@@ -25,7 +25,15 @@ module.exports.create = async function (req, res) {
     }
 }
 
+//create session
 module.exports.createSession = function (req, res) {
     console.log("session created");
     return res.redirect('/');
+}
+
+//signout
+module.exports.signOut = function(req,res){
+    req.logout((err)=>{
+        return res.redirect('/signin');
+    })
 }
