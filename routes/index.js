@@ -15,4 +15,7 @@ router.use('/user',require('./user'));
 //list
 router.use('/list',require('./list'));
 
+//task
+router.use('/task',require('./task'));
+
 module.exports=router
