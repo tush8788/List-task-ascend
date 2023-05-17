@@ -39,23 +39,23 @@
                         <p>
                             Task Name : <%=task.taskName%> <br>
                                 <% if(task.done){%>
-                                    <a style="text-decoration: none;" href="/task/doneornot/&done=false&listId=<%=i._id%>&taskId=<%=task._id%>">
+                                    <a style="text-decoration: none;" href="/task/doneornot/?done=false&listId=<%=i._id%>&taskId=<%=task._id%>">
                                         <img height="20" width="20" src="/img/like.png" alt="">
                                     </a>
                                 <% }else{ %>
-                                    <a style="text-decoration: none;" href="/task/doneornot/&done=true&listId=<%=i._id%>&taskId=<%=task._id%>">
+                                    <a style="text-decoration: none;" href="/task/doneornot/?done=true&listId=<%=i._id%>&taskId=<%=task._id%>">
                                         <img height="20" width="20" src="/img/dislike.png" alt=""/>
                                     </a>
                                     
                                 <%}%>
                                     &nbsp;
-                            <a href="/task/delete/&listId=<%=i._id%>&taskId=<%=task._id%>">
+                            <a href="/task/delete/?listId=<%=i._id%>&taskId=<%=task._id%>">
                                 <img src="https://cdn.iconscout.com/icon/free/png-16/free-delete-remove-clean-junk-cross-round-ui-4-14690.png?f=avif&w=512" alt="">
                             </a>
                         </p>
                     </div>
                     <%})%>
-                        <a href="/list/delete/&listId=<%=i._id%>">
+                        <a href="/list/delete/?listId=<%=i._id%>">
                             <img src="https://cdn.iconscout.com/icon/free/png-32/free-delete-736-470378.png?f=avif&w=512"
                                 alt="">
                         </a>

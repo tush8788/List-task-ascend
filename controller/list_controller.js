@@ -1,5 +1,6 @@
 const ListDB = require('../models/list');
 
+//create list
 module.exports.createList=async function(req,res){
   try{
     console.log(req.body);
@@ -24,6 +25,29 @@ module.exports.createList=async function(req,res){
   }
   catch(err){
     console.log(err)
+    return res.redirect('back');
+  }
+}
+
+//delete list 
+module.exports.deleteList = async function(req,res){
+  try{
+    // console.log(req.query);
+    // list find in DB 
+    let list = await ListDB.findById(req.query.listId);
+    //if list not found or user not match
+    if(!list || list.user!=req.user.id){
+      console.log("list on found in DB or unauthorize req");
+      return res.redirect('/user/signout');
+    }
+
+    await list.deleteOne();
+    
+    return res.redirect('back');
+
+  }
+  catch(err){
+    console.log(err);
     return res.redirect('back');
   }
 }
