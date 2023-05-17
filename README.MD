@@ -27,5 +27,5 @@ Task Board
 4. then go localhost:8000
 
 
-# This Site is Hosted on render 
-1. https://tambula-ticket-api.onrender.com/
+# This Site is Hosted on render (this site is hosted on free tier thats why its take some time to the load)
+1. https://list-board.onrender.com
