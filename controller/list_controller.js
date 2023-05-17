@@ -3,20 +3,22 @@ const ListDB = require('../models/list');
 //create list
 module.exports.createList=async function(req,res){
   try{
-    
+    //create list
     let list = await ListDB.create({
         listName:req.body.ListName,
         user:req.user
     });
 
+    //if list is created then create tasks
     if(list){
-        
+        //if multiple task 
         if(Array.isArray(req.body.TaskName)){
           req.body.TaskName.map((elem)=>{
             list.tasks.push({taskName:elem,done:false}); 
           });
         }
         else{
+          //single task
           list.tasks.push({taskName:req.body.TaskName,done:false});
         }
 
@@ -49,7 +51,7 @@ module.exports.deleteList = async function(req,res){
       req.flash("error","list on found in DB or unauthorize req..");
       return res.redirect('/user/signout');
     }
-
+    //delete list
     await list.deleteOne();
     req.flash("success","List delete successfully..");
     return res.redirect('back');

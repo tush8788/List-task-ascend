@@ -1,3 +1,7 @@
+#task-container>.form-control {
+    margin-bottom: 10px;
+}
+
 .first{
     height: 400px;
     width: 100%;
