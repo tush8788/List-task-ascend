@@ -29,22 +29,40 @@
     <% for(i of list){%>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">List Title : <%=i.listName%></h5>
+                <h5 class="card-title">
+                    <img src="https://cdn.iconscout.com/icon/free/png-16/free-task-36-461735.png?f=avif&w=512" alt="">
+                    List Title : <%=i.listName%>
+                </h5>
                 <hr>
                 <% i.tasks.map((task)=>{%>
                     <div>
                         <p>
-                            Task Name : <%=task.taskName%> 
-                            <br>Task done : <%=task.done%>
-                            <a href="/task/delete/&listId=<%=i._id%>&taskId=<%=task._id%>">delete</a>
+                            Task Name : <%=task.taskName%> <br>
+                                <% if(task.done){%>
+                                    <a style="text-decoration: none;" href="/task/doneornot/&done=false&listId=<%=i._id%>&taskId=<%=task._id%>">
+                                        <img height="20" width="20" src="/img/like.png" alt="">
+                                    </a>
+                                <% }else{ %>
+                                    <a style="text-decoration: none;" href="/task/doneornot/&done=true&listId=<%=i._id%>&taskId=<%=task._id%>">
+                                        <img height="20" width="20" src="/img/dislike.png" alt=""/>
+                                    </a>
+                                    
+                                <%}%>
+                                    &nbsp;
+                            <a href="/task/delete/&listId=<%=i._id%>&taskId=<%=task._id%>">
+                                <img src="https://cdn.iconscout.com/icon/free/png-16/free-delete-remove-clean-junk-cross-round-ui-4-14690.png?f=avif&w=512" alt="">
+                            </a>
                         </p>
                     </div>
-                <%})%>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                    <%})%>
+                        <a href="/list/delete/&listId=<%=i._id%>">
+                            <img src="https://cdn.iconscout.com/icon/free/png-32/free-delete-736-470378.png?f=avif&w=512"
+                                alt="">
+                        </a>
+                        <a href="#" class="card-link">Another link</a>
             </div>
         </div>
-    <%}%>
+        <%}%>
 </div>
 
 <script src="/js/AddTask.js"></script>
