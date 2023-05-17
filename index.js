@@ -11,6 +11,7 @@ const mongoStore = require('connect-mongo');
 // notification
 const flash = require('connect-flash');
 const notification = require('./config/notification');
+const dotenv = require('dotenv').config();
 // port
 const port = process.env.PORT || 8000;
 
