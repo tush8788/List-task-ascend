@@ -21,17 +21,19 @@ module.exports.createList=async function(req,res){
         }
 
         await list.save();
-        
+        req.flash("success","List create successfully..");
         return res.redirect('back')
     }
     else{
         console.log("error in create list")
+        req.flash("error","Error in create list..");
         return res.redirect('back')
     }
 
   }
   catch(err){
     console.log(err)
+    req.flash("error","Error in create list..");
     return res.redirect('back');
   }
 }
@@ -39,22 +41,23 @@ module.exports.createList=async function(req,res){
 //delete list 
 module.exports.deleteList = async function(req,res){
   try{
-    // console.log(req.query);
     // list find in DB 
     let list = await ListDB.findById(req.query.listId);
     //if list not found or user not match
     if(!list || list.user!=req.user.id){
       console.log("list on found in DB or unauthorize req");
+      req.flash("error","list on found in DB or unauthorize req..");
       return res.redirect('/user/signout');
     }
 
     await list.deleteOne();
-    
+    req.flash("success","List delete successfully..");
     return res.redirect('back');
 
   }
   catch(err){
     console.log(err);
+    req.flash("error","list on found in DB or unauthorize req..");
     return res.redirect('back');
   }
 }

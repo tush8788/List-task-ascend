@@ -10,7 +10,9 @@ module.exports.home = async function(req,res){
         })
     } 
     catch(err){
-        
+        console.log(err);
+        req.flash('error',"Internal Server Error");
+        return res.redirect('/');
     }
 }
 

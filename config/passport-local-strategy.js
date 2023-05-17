@@ -15,7 +15,8 @@ passport.use(new localStrategy({
         
         //if user not found or password not match
         if(!user || password != user.password){
-            console.log("Invaild email or password")
+            req.flash('error',"Invaild email or password");
+            // console.log("Invaild email or password")
             return done(null,false);
         }
 

@@ -9,17 +9,19 @@ module.exports.delete=async function(req,res){
         //check task found or user match or not 
         if(!list || list.user != req.user.id){
             console.log("user not match or task not found");
+            req.flash("error","user not match or task not found..");
             return res.redirect('/user/signout');
         }
         
         await list.tasks.pull({_id:req.query.taskId});
         await list.save();
-        
+        req.flash("success","Task delete successfully..");
         return res.redirect('back');
 
     }
     catch(err){
         console.log(err);
+        req.flash("error","Internal server error");
         return res.redirect('back');
 
     }
@@ -34,7 +36,8 @@ module.exports.taskDoneOrNot=async function(req,res){
 
         //check task found or user match or not 
         if(!list || list.user != req.user.id){
-            console.log("user not match or task not found");
+            // console.log("user not match or task not found");
+            req.flash("error","user not match or task not found..");
             return res.redirect('/user/signout');
         }
         
@@ -46,10 +49,12 @@ module.exports.taskDoneOrNot=async function(req,res){
         }
 
         await list.save();
+        req.flash("success","task status update..");
         return res.redirect('back');
     }
     catch(err){
         console.log(err);
+        req.flash("error","Internal server error");
         return res.redirect('back');
     }
 }
