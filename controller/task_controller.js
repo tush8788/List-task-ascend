@@ -58,3 +58,36 @@ module.exports.taskDoneOrNot=async function(req,res){
         return res.redirect('back');
     }
 }
+
+//new task page
+module.exports.newTaskPage = function(req,res){
+    return res.render('addNewTask',{
+        title:"New Task",
+        listId:req.query.listId
+    })
+}
+
+//create new task
+module.exports.createNewTask=async function(req,res){
+    try{
+        // console.log(req.body);
+        let list = await ListDB.findById(req.body.listId);
+
+        //check task found or user match or not 
+        if(!list || list.user != req.user.id){
+            req.flash("error","user not match or task not found..");
+            return res.redirect('/user/signout');
+        }
+
+        await list.tasks.push({taskName:req.body.newTask,done:false});
+
+        await list.save();
+        req.flash("success","Task add successfully")
+        return res.redirect('/')
+    }
+    catch(err){
+        console.log(err);
+        req.flash("error","Internal server error");
+        return res.redirect('back');
+    }
+}

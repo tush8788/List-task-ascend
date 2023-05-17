@@ -9,4 +9,10 @@ router.get('/delete',passport.checkAuthentication,taskController.delete);
 //task done or not
 router.get('/doneornot',passport.checkAuthentication,taskController.taskDoneOrNot);
 
+//add new Task
+router.get('/new-task',passport.checkAuthentication,taskController.newTaskPage);
+
+//crete task
+router.post('/create',passport.checkAuthentication,taskController.createNewTask);
+
 module.exports = router;

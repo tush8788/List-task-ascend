@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="/css/login.css">
+<!-- sign in -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-container">
+                <h3 class="heading">Add New Task</h3><br>
+                <form action="/task/create" method="post">
+                    <input type="text" class="form-control" name="newTask" placeholder="New Task" required><br>
+                    <input type="hidden" class="form-control" name="listId" value="<%=listId%>" readonly required><br><br>
+                    <input type="submit" id="btnSubmit" class="btn btn-dark btn-outline-warning" value="Add Task">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
