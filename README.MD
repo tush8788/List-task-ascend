@@ -21,7 +21,7 @@ Task Board
 
 ## Setup in Local System
 
-1. git clone "https://github.com/tush8788/List-task-ascend"
+1. git clone "https://github.com/tush8788/List-task-ascend.git"
 2. open command prompt and Type 'npm install' for download all dependencies
 3. then just "npm start"/ if npm start is not work just run this command 'node index.js'
 4. then go localhost:8000
