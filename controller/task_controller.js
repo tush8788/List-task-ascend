@@ -3,7 +3,7 @@ const ListDB = require('../models/list');
 //delete task
 module.exports.delete=async function(req,res){
     try{
-        console.log(req.query);
+        // console.log(req.query);
         let list = await ListDB.findOne({_id:req.query.listId});
         
         //check task found or user match or not 

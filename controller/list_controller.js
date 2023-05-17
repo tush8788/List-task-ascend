@@ -3,16 +3,23 @@ const ListDB = require('../models/list');
 //create list
 module.exports.createList=async function(req,res){
   try{
-    console.log(req.body);
+    
     let list = await ListDB.create({
         listName:req.body.ListName,
         user:req.user
     });
 
     if(list){
-        req.body.TaskName.map((elem)=>{
+        
+        if(Array.isArray(req.body.TaskName)){
+          req.body.TaskName.map((elem)=>{
             list.tasks.push({taskName:elem,done:false}); 
-        });
+          });
+        }
+        else{
+          list.tasks.push({taskName:req.body.TaskName,done:false});
+        }
+
         await list.save();
         
         return res.redirect('back')
